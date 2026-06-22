@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料视角 · hth 索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f7fa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            color: #1f2a3f;
+            line-height: 1.7;
+            padding: 0 20px;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 28px 0 48px;
+        }
+
+        /* ---------- 顶部导航 ---------- */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            padding: 14px 0 10px;
+            border-bottom: 1px solid #d9e2ec;
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #1f2a3f;
+        }
+
+        .nav-brand span {
+            color: #2a7f6e;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 0.93rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #305f6b;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.18s ease, color 0.18s;
+            padding-bottom: 2px;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #2a7f6e;
+            color: #1b4b4a;
+        }
+
+        /* ---------- Hero / 概要 ---------- */
+        .hero {
+            margin: 32px 0 38px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            color: #14212b;
+            letter-spacing: 0.01em;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 i {
+            font-style: normal;
+            background: linear-gradient(145deg, #1f5e58, #2a7f6e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #2c4053;
+            font-size: 1.02rem;
+        }
+
+        .hero p a {
+            color: #1f6b5e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #99c5bb;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .hero p a:hover {
+            color: #0c463e;
+            text-decoration-color: #2a7f6e;
+        }
+
+        /* ---------- 资料索引卡片网格 ---------- */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1e3b3a;
+            margin: 40px 0 14px;
+            letter-spacing: 0.02em;
+            border-left: 4px solid #2a7f6e;
+            padding-left: 14px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 18px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 18px 16px 16px;
+            box-shadow: 0 4px 12px rgba(36, 62, 72, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e1ebf0;
+            transition: box-shadow 0.2s, transform 0.15s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 20px rgba(40, 80, 80, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .card .tag {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #2a7f6e;
+            background: #e7f3ef;
+            display: inline-block;
+            padding: 0 10px;
+            border-radius: 30px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1b2c37;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: #3e5567;
+            margin-bottom: 4px;
+            flex: 1;
+        }
+
+        .card .meta {
+            font-size: 0.78rem;
+            color: #64828e;
+            border-top: 1px solid #e8f0f3;
+            padding-top: 8px;
+            margin-top: 6px;
+        }
+
+        /* ---------- 常见说明（FAQ 摘要） ---------- */
+        .faq-block {
+            background: #eef5f3;
+            border-radius: 16px;
+            padding: 22px 24px 18px;
+            margin: 20px 0 28px;
+            border-left: 5px solid #2a7f6e;
+        }
+
+        .faq-block h2 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #13322d;
+            margin-bottom: 14px;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+        }
+
+        .faq-item summary {
+            font-weight: 500;
+            color: #1b4a44;
+            cursor: pointer;
+            padding: 4px 0;
+            font-size: 0.94rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .faq-item summary::before {
+            content: "▸";
+            color: #2a7f6e;
+            font-size: 1.1rem;
+            transition: transform 0.16s;
+        }
+
+        .faq-item[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #2f4a56;
+            margin: 4px 0 6px 20px;
+            padding-left: 8px;
+            border-left: 2px solid #b6d4cb;
+        }
+
+        /* ---------- 说明 / 脚注 ---------- */
+        .note-line {
+            font-size: 0.85rem;
+            color: #546e7a;
+            border-top: 1px solid #d9e2ec;
+            padding-top: 18px;
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .note-line a {
+            color: #1f6b5e;
+            text-decoration: none;
+            border-bottom: 1px dotted #9abcd1;
+        }
+
+        .note-line a:hover {
+            border-bottom-style: solid;
+            color: #09453b;
+        }
+
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 580px) {
+            body {
+                padding: 0 14px;
+            }
+
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-block {
+                padding: 18px 16px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="nav-brand">索引·<span>hth</span></div>
+        <div class="nav-links">
+            <a href="#">概述</a>
+            <a href="#">场景</a>
+            <a href="#">说明</a>
+        </div>
+    </nav>
+
+    <!-- Hero & 核心介绍 -->
+    <div class="hero">
+        <h1>从资料整理到 <i>信息索引</i></h1>
+        <p>
+            日常浏览与项目调研中，常常需要将分散的材料串联起来。一个轻量的整理习惯往往能节省大量重复查找的时间。在尝试不同归类方式时，<a href="https://now-hth.com">hth</a> 提供了一种结构化的存档与访问思路。它不是什么大而全的数据库，而更像一个专用于节点梳理的索引边角——适合需要反复对照、快速定位资料的场景。
+        </p>
+    </div>
+
+    <!-- 三个场景模块（网格卡片） -->
+    <h2 class="section-title">常见索引场景</h2>
+    <div class="grid-cards">
+        <div class="card">
+            <span class="tag">场景一</span>
+            <h3>项目归档</h3>
+            <p>将不同阶段的文档、版本备注、参考链接按日期与类型归类，避免文件夹层级过深难以回溯。</p>
+            <div class="meta">适用于个人或小团队</div>
+        </div>
+        <div class="card">
+            <span class="tag">场景二</span>
+            <h3>笔记聚合</h3>
+            <p>把零散阅读笔记、代码片段、摘录按主题聚合，方便后续检索和交叉引用。</p>
+            <div class="meta">支持标签与简单分类</div>
+        </div>
+        <div class="card">
+            <span class="tag">场景三</span>
+            <h3>对照查阅</h3>
+            <p>当需要频繁比较几个固定来源的数据或定义时，将条目集中放置，减少窗口切换次数。</p>
+            <div class="meta">尤其适合清单与参数</div>
+        </div>
+    </div>
+
+    <!-- 常见说明（FAQ摘要风格） -->
+    <div class="faq-block">
+        <h2>一点常见说明</h2>
+        <details class="faq-item">
+            <summary>这个索引适合哪些内容？</summary>
+            <p>更适合文字类、链接类、短备注型的信息，比如操作备忘、配置参数、参考目录、调研要点等。对于大量图像或文件本身，建议搭配外部存储，hth 作为定位入口。</p>
+        </details>
+        <details class="faq-item">
+            <summary>索引会不会越积越多？</summary>
+            <p>任何积累都会自然增长。建议定期（比如每月）清理或归档旧条目。索引结构本身可以按主题或状态分类，避免单一列表过长。</p>
+        </details>
+        <details class="faq-item">
+            <summary>有多人协作的需求？</summary>
+            <p>目前更适合单人维护。如果团队有共享索引的需要，可以基于通用格式导出后合并。hth 的设计出发点偏向个人资料导航。</p>
+        </details>
+    </div>
+
+    <!-- 底部备注，包含 hth 链接 -->
+    <div class="note-line">
+        <span>基于日常整理习惯 · 信息索引参考</span>
+        <span>
+            <a href="https://now-hth.com">hth</a> · 2025
+        </span>
+    </div>
+
+</div>
+</body>
+</html>
