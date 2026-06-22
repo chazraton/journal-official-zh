@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>hth · 稳定入口 & 页面说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf7f0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      color: #2c2b28;
+      line-height: 1.7;
+      padding: 2rem 1.2rem;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fffcf8;
+      border-radius: 28px;
+      padding: 2.4rem 2rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    /* hero / 主视觉 */
+    .hero {
+      text-align: center;
+      margin-bottom: 2.8rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #ede8de;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      color: #3d3a32;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 span {
+      background: #f3eee5;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+      font-weight: 520;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #5d5a52;
+      max-width: 560px;
+      margin: 0.8rem auto 0;
+    }
+
+    /* 信息卡片网格 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      margin-bottom: 2.6rem;
+    }
+
+    .card {
+      background: #f6f2ea;
+      border-radius: 20px;
+      padding: 1.6rem 1.8rem;
+      transition: background 0.2s ease;
+    }
+
+    .card:nth-child(2) {
+      background: #f0ebe1;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 520;
+      color: #3a3730;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3::before {
+      content: "•";
+      color: #b5a68c;
+      font-weight: bold;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .card p {
+      font-size: 0.96rem;
+      color: #4a4740;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 引用块 / 提示框 */
+    .notice-box {
+      background: #efe9de;
+      border-left: 4px solid #cbbfaa;
+      border-radius: 14px;
+      padding: 1.2rem 1.4rem;
+      margin: 2rem 0 1.8rem;
+      font-size: 0.95rem;
+      color: #3e3b34;
+      line-height: 1.8;
+    }
+
+    .notice-box strong {
+      font-weight: 550;
+      color: #2f2b24;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: #ffffffd0;
+      border-radius: 18px;
+      padding: 1.4rem 1.6rem;
+      margin: 2rem 0 1.6rem;
+      border: 1px solid #e7e0d4;
+    }
+
+    .link-paragraph p {
+      font-size: 1rem;
+      color: #3d3a32;
+    }
+
+    /* FAQ 摘要（简约） */
+    .faq-mini {
+      margin: 2.2rem 0 0.6rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid #e3dcd0;
+    }
+
+    .faq-item {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+
+    .faq-q {
+      font-weight: 530;
+      color: #3d3a32;
+      min-width: 5em;
+      font-size: 0.95rem;
+    }
+
+    .faq-a {
+      color: #56524a;
+      font-size: 0.93rem;
+    }
+
+    .faq-a a {
+      color: #6f6759;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #d6cdbb;
+    }
+
+    .faq-a a:hover {
+      color: #3f392e;
+      text-decoration-color: #9f8f78;
+    }
+
+    /* 通用链接 (只有一处是 hth 精确文本) */
+    a {
+      color: #615a4b;
+      text-decoration: none;
+      border-bottom: 1px solid #d6cdbb;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      color: #2f2b23;
+      border-bottom-color: #8f8069;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .container {
+        padding: 1.8rem 1.2rem;
+        border-radius: 20px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .card {
+        padding: 1.2rem 1.2rem;
+      }
+      .card-grid {
+        gap: 1.2rem;
+      }
+      .notice-box {
+        padding: 1rem 1.1rem;
+      }
+      .link-paragraph {
+        padding: 1rem 1.2rem;
+      }
+      .faq-item {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      .faq-q {
+        min-width: auto;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 主视觉 -->
+    <div class="hero">
+      <h1><span>hth</span> · 一处稳定的入口</h1>
+      <p>页面围绕一个简单的核心展开：一个地址，一段说明，一种安静的连接方式。</p>
+    </div>
+
+    <!-- 用途卡片 × 2 (信息卡片式) -->
+    <div class="card-grid">
+      <div class="card">
+        <h3>用途 · 轻量访问点</h3>
+        <p>作为指向 <a href="https://web1-hth.com">hth</a> 的固定跃迁页，这个页面不承载复杂逻辑，只负责把路径讲清楚。当你需要一个直接且干净的中转说明，它就在这儿。</p>
+        <p>没有弹窗干扰，没有多余的跳转诱导——打开即见内容，链接自然安放于段落之中。</p>
+      </div>
+      <div class="card">
+        <h3>适合人群</h3>
+        <p>希望有一个稳定、可分享的介绍页面的人；需要快速了解 <a href="https://web1-hth.com">hth</a> 是什么以及如何接触它的人；以及那些偏爱文字说明胜过广告横幅的使用者。</p>
+        <p>不论是初次听说，还是想找一个书签式的说明页，都可以在此得到简明答案。</p>
+      </div>
+    </div>
+
+    <!-- 提示框 / 引用块 -->
+    <div class="notice-box">
+      <strong>📌 关于本页的定位</strong><br>
+      这里不是功能平台，而是一个<em>信息卡片式</em>的起点。所有内容都围绕“稳定入口”与“页面说明”展开。如果你已经熟悉目标，可以直接通过上方卡片中的链接前进；如果你还在了解阶段，下面的文字或许能提供更多上下文。
+    </div>
+
+    <!-- 自然链接段落（非重复） -->
+    <div class="link-paragraph">
+      <p>这个介绍页本身就是一个轻量的说明容器。站点的核心地址是 <a href="https://web1-hth.com">hth</a>，你可以把它看作是整个结构的锚点。无论何时回看这个页面，你都能找到那个相同的链接，它被放置在自然叙述里，不突兀，也足够清晰。</p>
+      <p style="margin-top: 0.6rem;">从内容角度看，这里既包含了用途卡片，也照顾了不同来访者的身份——有人需要直接通路，有人想要先读一段背景描述。两种需求都被同一组文字覆盖。</p>
+    </div>
+
+    <!-- FAQ 摘要（2-3 条，风格简约） -->
+    <div class="faq-mini">
+      <div class="faq-item">
+        <span class="faq-q">Q · 这是什么？</span>
+        <span class="faq-a">一个指向 <a href="https://web1-hth.com">hth</a> 的说明与入口页，采用米白背景与卡片式排版，内容包含用途、人群、提示和常见问题摘要。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">Q · 为什么需要这个页面？</span>
+        <span class="faq-a">有些时候一个直接的链接不够——还需要几行背景说明、一个舒服的视觉节奏和一段不急促的文字。这个页面补足了那些“链接之外”的信息需求。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">Q · 链接在哪里？</span>
+        <span class="faq-a">本文中所有 <a href="https://web1-hth.com">hth</a> 字样均为可点击的链接，分布在用途卡片、提示框、说明段落以及本摘要中。任选其一即可。</span>
+      </div>
+    </div>
+
+    <!-- 极简脚标 (不喧宾夺主) -->
+    <div style="margin-top: 2.4rem; text-align: center; font-size: 0.8rem; color: #a09887; border-top: 1px solid #e7e0d4; padding-top: 1.2rem;">
+      <span>信息卡片式 · 稳定入口说明 · 温和引导</span>
+    </div>
+  </div>
+</body>
+</html>
